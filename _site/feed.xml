@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-04-22T13:50:57-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Facetop</title><subtitle>The Industrial Revolution on your face</subtitle><entry><title type="html">Facetop Components and Tech Stack</title><link href="http://localhost:4000/facetop/2020/04/22/facetop-components-and-tech-stack.html" rel="alternate" type="text/html" title="Facetop Components and Tech Stack" /><published>2020-04-22T03:10:00-07:00</published><updated>2020-04-22T03:10:00-07:00</updated><id>http://localhost:4000/facetop/2020/04/22/facetop-components-and-tech-stack</id><content type="html" xml:base="http://localhost:4000/facetop/2020/04/22/facetop-components-and-tech-stack.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;According to &lt;a href=&quot;https://securitytoday.com/articles/2020/01/13/the-iot-rundown-for-2020.aspx&quot;&gt;Security Today&lt;/a&gt;, during 2020 global spending on the Internet of Things (IoT) should reach $1.29 trillion. By 2021—the industrial IoT market size should reach $124 billion. By 2024—the global IoT healthcare market should reach $14 billion. By 2026—experts estimate that the IoT device market will reach $1.1 trillion.&lt;/p&gt;
+
+&lt;p&gt;It’s clear that the Internet of Things is going to be massive and that it’s here to stay. Facetop computing has been waiting for an IoT catalyst and due to COVID-19 we believe smart-masks will be gateway that takes Facetop computing mainstream.&lt;/p&gt;
+
+&lt;h2 id=&quot;components&quot;&gt;Components&lt;/h2&gt;
+
+&lt;h3 id=&quot;raspberry-pi&quot;&gt;Raspberry Pi&lt;/h3&gt;
+
+&lt;p&gt;At the heart of Facetop is the Raspberry Pi which comes fully equipped with a Broadcom system on a chip (SoC) with an integrated ARM-compatible CPU and on-chip GPU. Processor speed is 1.5 GHz with 4 GB of RAM. HDMI, 3.5mm audio jack as well as WIFI and Bluetooth leave many ways to get data on/off the device.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/rasp-pi.jpg&quot; alt=&quot;Rasp Pi&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Raspberry_Pi&quot;&gt;More Info&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;raspberry-pi-zero&quot;&gt;Raspberry Pi Zero&lt;/h4&gt;
+
+&lt;p&gt;The Raspberry Pi is relatively bulky to be worn on a mask. After we finish prototyping we’ll either move to a smaller Raspberry Pi model, such as the Zero, or we’ll go with our own custom boards.&lt;/p&gt;
+
+&lt;p&gt;Front&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/rasp-pi-zero-front.jpg&quot; alt=&quot;Rasp Pi Zero front&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Back&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/rasp-pi-zero-back.jpg&quot; alt=&quot;Rasp Pi Zero back&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/blog/raspberry-pi-zero-w-joins-family/&quot;&gt;More Info&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;raspberry-pi-camera&quot;&gt;Raspberry Pi Camera&lt;/h4&gt;
+
+&lt;p&gt;Facetop is a “voice first” UX. You can stream data to a phone or tablet over Bluetooth but there is no screen which sits over your eye(s) like with smart glasses. You can however snap photos and video as well as stream video using the Raspberry Pi Camera.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/rasp-pi-camera.jpg&quot; alt=&quot;Rasp Pi Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.raspberrypi.org/products/camera-module-v2/&quot;&gt;More Info&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech Stack&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/facetop-tech-stack.jpg&quot; alt=&quot;Tech Stack&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Facetop has a very rich software ecosystem. my.facetop.xyz is the dashboard where users sign in to view usage stats as well as interact with their Facetop.&lt;/p&gt;
+
+&lt;h3 id=&quot;myfacetopxyz&quot;&gt;my.facetop.xyz&lt;/h3&gt;
+
+&lt;p&gt;As with &lt;a href=&quot;https://github.com/EarthEngineering&quot;&gt;all of our software&lt;/a&gt;, my.facetop.xyz is 100% open source under the &lt;a href=&quot;https://opensource.org/licenses/MIT&quot;&gt;MIT license&lt;/a&gt; and can be found &lt;a href=&quot;https://github.com/EarthEngineering/my.facetop.xyz&quot;&gt;on Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;restfacetopxyz&quot;&gt;rest.facetop.xyz&lt;/h3&gt;
+
+&lt;p&gt;This can also be found &lt;a href=&quot;https://github.com/EarthEngineering/rest.facetop.xyz&quot;&gt;on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;facetop-os&quot;&gt;Facetop OS&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/EarthEngineering/facetop-os&quot;&gt;on Github&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Facetop Brainstorming Session</title><link href="http://localhost:4000/facetop/2020/04/20/facetop-brainstorm-session.html" rel="alternate" type="text/html" title="Facetop Brainstorming Session" /><published>2020-04-20T22:25:00-07:00</published><updated>2020-04-20T22:25:00-07:00</updated><id>http://localhost:4000/facetop/2020/04/20/facetop-brainstorm-session</id><content type="html" xml:base="http://localhost:4000/facetop/2020/04/20/facetop-brainstorm-session.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/facetop_logo.jpg&quot; alt=&quot;Facetop logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/intro.jpg&quot; alt=&quot;Intro&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;What is Facetop?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PPE
+    &lt;ul&gt;
+      &lt;li&gt;Personal Protective Equipment&lt;/li&gt;
+      &lt;li&gt;Masks&lt;/li&gt;
+      &lt;li&gt;Gloves&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The Industrial Revolution on your Face&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mainframe&lt;/li&gt;
+  &lt;li&gt;Micro computers&lt;/li&gt;
+  &lt;li&gt;Desktop&lt;/li&gt;
+  &lt;li&gt;Laptop&lt;/li&gt;
+  &lt;li&gt;Wristtop&lt;/li&gt;
+  &lt;li&gt;Facetop&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Google Glass didn’t go mainstream. Due to COVID-19 there’s a much greater opportunity for Facetop computing to go mainstream.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/intro_cont.jpg&quot; alt=&quot;Intro Continued&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Open source hardware and software&lt;/p&gt;
+
+&lt;p&gt;Internet of Things tech stack&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MQTT&lt;/li&gt;
+  &lt;li&gt;HTTP&lt;/li&gt;
+  &lt;li&gt;TCPIP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/sketches_1.jpg&quot; alt=&quot;Sketches 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/sketches_2.jpg&quot; alt=&quot;Sketches 2&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">Hello Facetop!</title><link href="http://localhost:4000/facetop/2020/04/20/hello-facetop.html" rel="alternate" type="text/html" title="Hello Facetop!" /><published>2020-04-20T22:19:49-07:00</published><updated>2020-04-20T22:19:49-07:00</updated><id>http://localhost:4000/facetop/2020/04/20/hello-facetop</id><content type="html" xml:base="http://localhost:4000/facetop/2020/04/20/hello-facetop.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;We believe that with crisis comes opportunity. When the recent COVID19 pandemic and shelter-in-place instructions hit our home state of California we decided to step back and brainstorm on ways that we could have a positive impact.&lt;/p&gt;
+
+&lt;p&gt;One of the most obvious changes in our lives is the need to wear masks when out in public in groups. This is truly a new behavior for most humans and represents an opportunity to help proper UX and privacy conventions emerge.&lt;/p&gt;
+
+&lt;h2 id=&quot;facetop-computing&quot;&gt;Facetop Computing&lt;/h2&gt;
+
+&lt;p&gt;In the same way that Desktop computing represented a serious leap forward compaired to mainframe and micro computing—Facetop computing represents as large of a paradigm shift as desktop and mobile computing.&lt;/p&gt;
+
+&lt;p&gt;Wearing smart-masks presents the opportunity to engage with information, data and computation which is uniquely personal. We believe that Facetop computing is a HUGE leap forward and we hope that our work can have a positive impact on the lives of people around the world during the COVID-19 pandemic and beyond.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/facetop_logo.jpg&quot; alt=&quot;Facetop logo&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry></feed>
