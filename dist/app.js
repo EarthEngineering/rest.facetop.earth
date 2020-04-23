@@ -25,6 +25,8 @@ if (process.env.NETWORK === "mainnet") {
 else {
     apiSpec = require("./public/facetop-testnet-rest-v2.json");
 }
+// v1
+var indexV1 = require("./routes/v1/index");
 // v2
 var indexV2 = require("./routes/v2/index");
 var healthCheckV2 = require("./routes/v2/health-check");

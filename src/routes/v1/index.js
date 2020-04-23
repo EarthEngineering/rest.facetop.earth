@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
   res.render("swagger-v1")
 })
 
-router.get("/v2", (req, res, next) => {
+router.get("/v1", (req, res, next) => {
   res.render("swagger-v1")
 })
 

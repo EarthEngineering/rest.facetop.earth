@@ -27,6 +27,9 @@ if (process.env.NETWORK === "mainnet") {
   apiSpec = require("./public/facetop-testnet-rest-v2.json")
 }
 
+// v1
+const indexV1 = require("./routes/v1/index")
+
 // v2
 const indexV2 = require("./routes/v2/index")
 const healthCheckV2 = require("./routes/v2/health-check")
