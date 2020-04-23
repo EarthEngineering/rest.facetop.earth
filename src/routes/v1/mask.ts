@@ -43,7 +43,7 @@ async function detailsFromInsight(
 ): Promise<MaskDetailsInterface> {
   try {
 
-    let path: string = `${process.env.BITCOINCOM_BASEURL}addr`
+    let path: string = ""
 
     // Set from and to params based on currentPage and pageSize
     // https://github.com/bitpay/insight-api/blob/master/README.md#notes-on-upgrading-from-v02
