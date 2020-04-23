@@ -4,7 +4,7 @@ node_modules/
 coverage
 dist/routes/**
 logs/
-package-lock.json
+yarn.lock
 yarn-error.log
 *.DS_Store
 ./**/*.DS_STORE
