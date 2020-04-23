@@ -9,6 +9,15 @@
           }
         }
       },
+      "MaskDetails": {
+        "type": "object",
+        "properties": {
+          "balance": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
       "Masks": {
         "type": "object",
         "properties": {
@@ -19,6 +28,12 @@
             },
             "example": []
           }
+        }
+      },
+      "MaskDetailsArray": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/MaskDetails"
         }
       }
     }
