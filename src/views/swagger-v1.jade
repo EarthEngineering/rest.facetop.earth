@@ -39,13 +39,7 @@ html(lang='en')
     script(src='../public/swagger-ui-standalone-preset.js')
     script.
       window.onload = function() {
-      let network = "#{env.NETWORK}"
-      let path;
-      if(network === 'mainnet') {
-        path = "../public/facetop-mainnet-rest-v2.json" 
-      } else {
-        path = "../public/facetop-testnet-rest-v2.json" 
-      }
+      path = "../public/facetop-mainnet-rest-v2.json" 
       const ui = SwaggerUIBundle({
         
       url: path,

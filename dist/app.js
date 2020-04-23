@@ -18,13 +18,7 @@ var http = require("http");
 var cors = require("cors");
 var AuthMW = require("./middleware/auth");
 var swStats = require("swagger-stats");
-var apiSpec;
-if (process.env.NETWORK === "mainnet") {
-    apiSpec = require("./public/facetop-mainnet-rest-v2.json");
-}
-else {
-    apiSpec = require("./public/facetop-testnet-rest-v2.json");
-}
+var apiSpec = require("./public/facetop-mainnet-rest-v2.json");
 // v1
 var indexV1 = require("./routes/v1/index");
 var healthCheckV1 = require("./routes/v1/health-check");
