@@ -4,7 +4,7 @@ import { BITBOX } from "bitbox-sdk"
 import * as express from "express"
 import * as util from "util"
 import {
-  AddressDetailsInterface
+  MaskDetailsInterface
 } from "./interfaces/RESTInterfaces"
 import logger = require("./logging.js")
 import routeUtils = require("./route-utils")
@@ -47,7 +47,7 @@ function root(
 async function detailsFromInsight(
   thisAddress: string,
   currentPage: number = 0
-): Promise<AddressDetailsInterface> {
+): Promise<MaskDetailsInterface> {
   try {
     let addr: string
     if (
@@ -68,7 +68,7 @@ async function detailsFromInsight(
 
     // Query the Insight server.
     const axiosResponse: AxiosResponse = await axiosTimeOut.get(path)
-    const retData: AddressDetailsInterface = axiosResponse.data
+    const retData: MaskDetailsInterface = axiosResponse.data
 
     // Calculate pagesTotal from response
     const pagesTotal: number = Math.ceil(retData.txApperances / PAGE_SIZE)
@@ -144,7 +144,7 @@ async function detailsSingle(
     }
 
     // Query the Insight API.
-    let retData: AddressDetailsInterface = await detailsFromInsight(
+    let retData: MaskDetailsInterface = await detailsFromInsight(
       address,
       currentPage
     )
@@ -225,14 +225,14 @@ async function detailsBulk(
 
     // Loops through each address and creates an array of Promises, querying
     // Insight API in parallel.
-    let addressPromises: Promise<AddressDetailsInterface>[] = addresses.map(
-      async (address: any): Promise<AddressDetailsInterface> => {
+    let addressPromises: Promise<MaskDetailsInterface>[] = addresses.map(
+      async (address: any): Promise<MaskDetailsInterface> => {
         return detailsFromInsight(address, currentPage)
       }
     )
 
     // Wait for all parallel Insight requests to return.
-    let result: AddressDetailsInterface[] = await Promise.all(addressPromises)
+    let result: MaskDetailsInterface[] = await Promise.all(addressPromises)
 
     // Return the array of retrieved address information.
     res.status(200)
