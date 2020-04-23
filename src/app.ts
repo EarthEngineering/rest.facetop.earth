@@ -1,6 +1,4 @@
 
-// const util = require("util")
-
 import * as express from "express"
 import { logReqInfo } from "./middleware/req-logging"
 // Middleware
@@ -11,20 +9,18 @@ const logger = require("morgan")
 const wlogger = require("./util/winston-logging")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
-// const basicAuth = require("express-basic-auth")
 const helmet = require("helmet")
 const debug = require("debug")("rest-cloud:server")
 const http = require("http")
 const cors = require("cors")
 const AuthMW = require("./middleware/auth")
 
-const swStats = require("swagger-stats")
 let apiSpec = require("./public/facetop-mainnet-rest-v1.json")
 
 // v1
 const indexV1 = require("./routes/v1/index")
-const healthCheckV1 = require("./routes/v1/health-check")
-const maskV1 = require("./routes/v1/mask")
+// const healthCheckV1 = require("./routes/v1/health-check")
+// const maskV1 = require("./routes/v1/mask")
 
 interface IError {
   message: string
@@ -36,8 +32,6 @@ require("dotenv").config()
 const app: express.Application = express()
 
 app.locals.env = process.env
-
-app.use(swStats.getMiddleware({ swaggerSpec: apiSpec }))
 
 app.use(helmet())
 
@@ -65,29 +59,6 @@ app.use(express.static(path.join(__dirname, "public")))
 // Local logging middleware for tracking incoming connection information.
 app.use(`/`, logReqInfo)
 
-//
-// let username = process.env.USERNAME;
-// let password = process.env.PASSWORD;
-//
-// app.use(basicAuth(
-//   {
-//     users: { username: password }
-//   }
-// ));
-
-interface ICustomRequest extends express.Request {
-  io: any
-}
-
-// Make io accessible to our router
-app.use(
-  (req: ICustomRequest, res: express.Response, next: express.NextFunction) => {
-    req.io = io
-
-    next()
-  }
-)
-
 const v1prefix = "v1"
 
 // Instantiate the authorization middleware, used to implement pro-tier rate limiting.
@@ -97,7 +68,7 @@ app.use(`/${v1prefix}/`, auth.mw())
 // Rate limit on all v1 routes
 app.use(`/${v1prefix}/`, routeRateLimit)
 app.use("/", indexV1)
-app.use(`/${v1prefix}/` + `health-check`, healthCheckV1)
+// app.use(`/${v1prefix}/` + `health-check`, healthCheckV1)
 // app.use(`/${v1prefix}/` + `mask`, maskV1)
 
 
@@ -147,7 +118,6 @@ console.log(`rest.facetop.xyz started on port ${port}`)
  * Create HTTP server.
  */
 const server = http.createServer(app)
-const io = require("socket.io").listen(server)
 
 /**
  * Listen on provided port, on all network interfaces.
