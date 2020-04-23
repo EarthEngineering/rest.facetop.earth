@@ -4,8 +4,6 @@ import * as express from "express"
 import { routeRateLimit } from "./middleware/route-ratelimit"
 
 const path = require("path")
-const logger = require("morgan")
-const wlogger = require("./util/winston-logging")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
 const helmet = require("helmet")

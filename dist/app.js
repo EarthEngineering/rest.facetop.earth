@@ -4,8 +4,6 @@ var express = require("express");
 // Middleware
 var route_ratelimit_1 = require("./middleware/route-ratelimit");
 var path = require("path");
-var logger = require("morgan");
-var wlogger = require("./util/winston-logging");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
 var helmet = require("helmet");
