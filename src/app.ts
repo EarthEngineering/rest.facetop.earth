@@ -97,7 +97,7 @@ app.use(
  */
 const port = normalizePort(process.env.PORT || "3000")
 app.set("port", port)
-console.log(`rest.facetop.xyz started on port ${port}`)
+console.log(`rest.facetop.earth started on port ${port}`)
 
 /**
  * Create HTTP server.
