@@ -220,7 +220,7 @@ async function getBlockHeaderBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, hashes)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -407,7 +407,7 @@ async function getMempoolEntryBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, txids)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -648,7 +648,7 @@ async function getTxOutProofBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, txids)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -838,7 +838,7 @@ async function verifyTxOutProofBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, proofs)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })

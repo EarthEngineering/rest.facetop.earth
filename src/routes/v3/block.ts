@@ -97,7 +97,7 @@ async function detailsByHashBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, hashes)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -224,7 +224,7 @@ async function detailsByHeightBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, heights)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })

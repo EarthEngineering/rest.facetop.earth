@@ -1715,7 +1715,8 @@
 }
 
 .swagger-ui img {
-  width: 175px;
+  width: 350px;
+  height: 150px;
 }
 
 .swagger-ui a,

@@ -1,4 +1,3 @@
-"use strict"
 
 // const wtfnode = require("wtfnode") // Debugging the event loop
 // const util = require("util")
@@ -23,9 +22,9 @@ const AuthMW = require("./middleware/auth")
 const swStats = require("swagger-stats")
 let apiSpec
 if (process.env.NETWORK === "mainnet") {
-  apiSpec = require("./public/bitcoin-com-mainnet-rest-v2.json")
+  apiSpec = require("./public/facetop-mainnet-rest-v2.json")
 } else {
-  apiSpec = require("./public/bitcoin-com-testnet-rest-v2.json")
+  apiSpec = require("./public/facetop-testnet-rest-v2.json")
 }
 
 // v2
@@ -204,7 +203,7 @@ app.use(
  */
 const port = normalizePort(process.env.PORT || "3000")
 app.set("port", port)
-console.log(`rest.bitcoin.com started on port ${port}`)
+console.log(`rest.facetop.xyz started on port ${port}`)
 
 /**
  * Create HTTP server.

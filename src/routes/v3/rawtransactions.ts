@@ -93,7 +93,7 @@ async function decodeRawTransactionBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, hexes)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -249,7 +249,7 @@ async function decodeScriptBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, hexes)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -345,7 +345,7 @@ async function getRawTransactionBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, txids)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -457,7 +457,7 @@ async function sendRawTransactionBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, hexes)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })

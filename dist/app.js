@@ -1,7 +1,7 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 // const wtfnode = require("wtfnode") // Debugging the event loop
 // const util = require("util")
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var req_logging_1 = require("./middleware/req-logging");
 // Middleware
@@ -20,10 +20,10 @@ var AuthMW = require("./middleware/auth");
 var swStats = require("swagger-stats");
 var apiSpec;
 if (process.env.NETWORK === "mainnet") {
-    apiSpec = require("./public/bitcoin-com-mainnet-rest-v2.json");
+    apiSpec = require("./public/facetop-mainnet-rest-v2.json");
 }
 else {
-    apiSpec = require("./public/bitcoin-com-testnet-rest-v2.json");
+    apiSpec = require("./public/facetop-testnet-rest-v2.json");
 }
 // v2
 var indexV2 = require("./routes/v2/index");
@@ -143,7 +143,7 @@ app.use(function (err, req, res, next) {
  */
 var port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
-console.log("rest.bitcoin.com started on port " + port);
+console.log("rest.facetop.xyz started on port " + port);
 /**
  * Create HTTP server.
  */
@@ -202,3 +202,5 @@ function onListening() {
     var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
     debug("Listening on " + bind);
 }
+//
+// module.exports = app;

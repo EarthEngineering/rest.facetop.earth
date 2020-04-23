@@ -199,7 +199,7 @@ async function detailsBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, addresses)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -400,7 +400,7 @@ async function utxoBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, addresses)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -568,7 +568,7 @@ async function unconfirmedBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, addresses)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -693,7 +693,7 @@ async function transactionsBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, addresses)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })

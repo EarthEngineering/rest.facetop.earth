@@ -315,7 +315,7 @@ async function listBulkToken(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, tokenIds)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -652,7 +652,7 @@ async function balancesForAddressBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, addresses)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -970,7 +970,7 @@ async function balancesForTokenBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, tokenIds)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -1475,7 +1475,7 @@ async function convertAddressBulk(
 
   // Enforce array size rate limits
   if (!routeUtils.validateArraySize(req, addresses)) {
-    res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+    res.status(429) //
     return res.json({
       error: `Array too large.`
     })
@@ -1526,7 +1526,7 @@ async function validateBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, txids)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -1789,7 +1789,7 @@ async function burnTotalBulk(
 
     // Enforce array size rate limits
     if (!routeUtils.validateArraySize(req, txids)) {
-      res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+      res.status(429) //
       return res.json({
         error: `Array too large.`
       })
@@ -2383,7 +2383,7 @@ async function tokenStatsBulk(
 
   // Enforce array size rate limits
   if (!routeUtils.validateArraySize(req, tokenIds)) {
-    res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+    res.status(429) //
     return res.json({
       error: `Array too large.`
     })

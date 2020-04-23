@@ -9,7 +9,8 @@ const ASSET_FILES = [
   "src/**/*.json",
   "src/**/*.jade",
   "src/**/*.css",
-  "src/**/*.png"
+  "src/**/*.png",
+  "src/**/*.jpg"
 ]
 
 gulp.task("build", () => {
@@ -130,7 +131,7 @@ gulp.task("build", () => {
       .src("./swaggerJSONFilesBuilt/testnet/**/*.json")
       .pipe(
         merge({
-          fileName: "bitcoin-com-testnet-rest-v2.json"
+          fileName: "facetop-testnet-rest-v2.json"
         })
       )
       .pipe(gulp.dest("./dist/public"))
@@ -253,7 +254,7 @@ gulp.task("build", () => {
       .src("./swaggerJSONFilesBuilt/mainnet/**/*.json")
       .pipe(
         merge({
-          fileName: "bitcoin-com-mainnet-rest-v2.json"
+          fileName: "facetop-mainnet-rest-v2.json"
         })
       )
       .pipe(gulp.dest("./dist/public"))

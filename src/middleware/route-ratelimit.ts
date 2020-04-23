@@ -72,7 +72,7 @@ const routeRateLimit = function(
         ) {
           //console.log(`pro-tier rate-handler triggered.`)
 
-          res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+          res.status(429) //
           return res.json({
             error: `Too many requests. Limits are ${PRO_RPM} requests per minute.`
           })
@@ -97,7 +97,7 @@ const routeRateLimit = function(
         ) {
           //console.log(`freemium rate-handler triggered.`)
 
-          res.status(429) // https://github.com/Bitcoin-com/rest.bitcoin.com/issues/330
+          res.status(429) //
           return res.json({
             error: `Too many requests. Limits are ${maxRequests} requests per minute.`
           })

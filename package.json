@@ -1,11 +1,9 @@
 {
-  "name": "rest.bitcoin.com",
-  "version": "3.12.4",
-  "description": "REST API for Bitcoin.com's Cloud",
-  "author": "Gabriel Cardona <gabriel@bitcoin.com>",
-  "contributors": [
-    "Chris Troutner <chris.troutner@gmail.com>"
-  ],
+  "name": "rest.facetop.xyz",
+  "version": "0.1.0",
+  "description": "REST API for Facetop",
+  "author": "Gabriel Cardona <gabriel.earth.engineering@gmail.com>",
+  "contributors": [],
   "license": "MIT",
   "scripts": {
     "start": "npm run build && node ./dist/app.js",
@@ -36,7 +34,7 @@
     "debug": "~2.6.3",
     "dotenv": "^4.0.0",
     "elasticsearch": "^13.0.1",
-    "express": "^4.15.5",
+    "express": "4.17.1",
     "express-basic-auth": "^1.1.3",
     "express-rate-limit": "^2.11.0",
     "gulp-json-modify": "^1.0.2",
