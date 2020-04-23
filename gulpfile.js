@@ -236,7 +236,7 @@ gulp.task("build", () => {
       .src("./swaggerJSONFilesBuilt/mainnet/**/*.json")
       .pipe(
         merge({
-          fileName: "facetop-mainnet-rest-v2.json"
+          fileName: "facetop-mainnet-rest-v1.json"
         })
       )
       .pipe(gulp.dest("./dist/public"))

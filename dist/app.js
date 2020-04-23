@@ -18,10 +18,11 @@ var http = require("http");
 var cors = require("cors");
 var AuthMW = require("./middleware/auth");
 var swStats = require("swagger-stats");
-var apiSpec = require("./public/facetop-mainnet-rest-v2.json");
+var apiSpec = require("./public/facetop-mainnet-rest-v1.json");
 // v1
 var indexV1 = require("./routes/v1/index");
 var healthCheckV1 = require("./routes/v1/health-check");
+var maskV1 = require("./routes/v1/mask");
 require("dotenv").config();
 var app = express();
 app.locals.env = process.env;
@@ -54,6 +55,7 @@ app.use("/" + v1prefix + "/", auth.mw());
 app.use("/" + v1prefix + "/", route_ratelimit_1.routeRateLimit);
 app.use("/", indexV1);
 app.use("/" + v1prefix + "/" + "health-check", healthCheckV1);
+// app.use(`/${v1prefix}/` + `mask`, maskV1)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = {

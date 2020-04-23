@@ -42,7 +42,7 @@ function root(
   return res.json({ status: "mask" })
 }
 
-// Query the Insight API for details on a single BCH address.
+// Query the Insight API for details on a single BCH masks.
 // Returns a Promise.
 async function detailsFromInsight(
   thisAddress: string,
@@ -73,7 +73,7 @@ async function detailsFromInsight(
     // Calculate pagesTotal from response
     const pagesTotal: number = Math.ceil(retData.txApperances / PAGE_SIZE)
 
-    // Append different address formats to the return data.
+    // Append different masks formats to the return data.
     retData.legacyAddress = bitbox.Address.toLegacyAddress(retData.addrStr)
     retData.cashAddress = bitbox.Address.toCashAddress(retData.addrStr)
     retData.slpAddress = Utils.toSlpAddress(retData.cashAddress)
@@ -91,65 +91,65 @@ async function detailsFromInsight(
   }
 }
 
-// GET handler for single address details
+// GET handler for single mask details
 async function detailsSingle(
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
 ): Promise<express.Response> {
   try {
-    const address: string = req.params.address
+    const mask: string = req.params.mask
     const currentPage: number = req.query.page
       ? parseInt(req.query.page, 10)
       : 0
 
-    if (!address || address === "") {
+    if (!mask || mask === "") {
       res.status(400)
-      return res.json({ error: "address can not be empty" })
+      return res.json({ error: "mask can not be empty" })
     }
 
-    // Reject if address is an array.
-    if (Array.isArray(address)) {
+    // Reject if mask is an array.
+    if (Array.isArray(mask)) {
       res.status(400)
       return res.json({
-        error: "address can not be an array. Use POST for bulk upload."
+        error: "mask can not be an array. Use POST for bulk upload."
       })
     }
 
-    logger.debug(`Executing address/detailsSingle with this address: `, address)
+    logger.debug(`Executing mask/detailsSingle with this mask: `, mask)
     wlogger.debug(
-      `Executing address/detailsSingle with this address: `,
-      address
+      `Executing mask/detailsSingle with this mask: `,
+      mask
     )
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid BCH mask.
     try {
-      bitbox.Address.toLegacyAddress(address)
+      bitbox.Address.toLegacyAddress(mask)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid BCH mask. Double check your mask is valid: ${mask}`
       })
     }
 
-    // Prevent a common user error. Ensure they are using the correct network address.
+    // Prevent a common user error. Ensure they are using the correct network mask.
     const networkIsValid: boolean = routeUtils.validateNetwork(
-      Utils.toLegacyAddress(address)
+      Utils.toLegacyAddress(mask)
     )
     if (!networkIsValid) {
       res.status(400)
       return res.json({
-        error: `Invalid network. Trying to use a testnet address on mainnet, or vice versa.`
+        error: `Invalid network. Trying to use a testnet mask on mainnet, or vice versa.`
       })
     }
 
     // Query the Insight API.
     let retData: MaskDetailsInterface = await detailsFromInsight(
-      address,
+      mask,
       currentPage
     )
 
-    // Return the retrieved address information.
+    // Return the retrieved mask information.
     res.status(200)
     return res.json(retData)
   } catch (err) {
@@ -161,80 +161,80 @@ async function detailsSingle(
     }
 
     // Write out error to error log.
-    //logger.error(`Error in address.ts/detailsSingle: `, err)
-    wlogger.error(`Error in address.ts/detailsSingle().`, err)
+    //logger.error(`Error in mask.ts/detailsSingle: `, err)
+    wlogger.error(`Error in mask.ts/detailsSingle().`, err)
 
     res.status(500)
     return res.json({ error: util.inspect(err) })
   }
 }
 
-// POST handler for bulk queries on address details
+// POST handler for bulk queries on mask details
 async function detailsBulk(
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
 ): Promise<express.Response> {
   try {
-    let addresses: string[] = req.body.addresses
+    let masks: string[] = req.body.masks
     const currentPage: number = req.body.page ? parseInt(req.body.page, 10) : 0
 
-    // Reject if addresses is not an array.
-    if (!Array.isArray(addresses)) {
+    // Reject if masks is not an array.
+    if (!Array.isArray(masks)) {
       res.status(400)
       return res.json({
-        error: "addresses needs to be an array. Use GET for single address."
+        error: "masks needs to be an array. Use GET for single masks."
       })
     }
 
     // Enforce array size rate limits
-    if (!routeUtils.validateArraySize(req, addresses)) {
+    if (!routeUtils.validateArraySize(req, masks)) {
       res.status(429) //
       return res.json({
         error: `Array too large.`
       })
     }
 
-    logger.debug(`Executing address/details with these addresses: `, addresses)
-    wlogger.debug(`Executing address/details with these addresses: `, addresses)
+    logger.debug(`Executing masks/details with these masks: `, masks)
+    wlogger.debug(`Executing masks/details with these masks: `, masks)
 
-    // Validate each element in the address array.
-    for (let i: number = 0; i < addresses.length; i++) {
-      const thisAddress: string = addresses[i]
-      // Ensure the input is a valid BCH address.
+    // Validate each element in the masks array.
+    for (let i: number = 0; i < masks.length; i++) {
+      const thisAddress: string = masks[i]
+      // Ensure the input is a valid BCH masks.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid BCH masks. Double check your masks is valid: ${thisAddress}`
         })
       }
 
-      // Prevent a common user error. Ensure they are using the correct network address.
+      // Prevent a common user error. Ensure they are using the correct network masks.
       const networkIsValid: boolean = routeUtils.validateNetwork(
         Utils.toCashAddress(thisAddress)
       )
       if (!networkIsValid) {
         res.status(400)
         return res.json({
-          error: `Invalid network for address ${thisAddress}. Trying to use a testnet address on mainnet, or vice versa.`
+          error: `Invalid network for masks ${thisAddress}. Trying to use a testnet masks on mainnet, or vice versa.`
         })
       }
     }
 
-    // Loops through each address and creates an array of Promises, querying
+    // Loops through each masks and creates an array of Promises, querying
     // Insight API in parallel.
-    let addressPromises: Promise<MaskDetailsInterface>[] = addresses.map(
-      async (address: any): Promise<MaskDetailsInterface> => {
-        return detailsFromInsight(address, currentPage)
+    let masksPromises: Promise<MaskDetailsInterface>[] = masks.map(
+      async (masks: any): Promise<MaskDetailsInterface> => {
+        return detailsFromInsight(masks, currentPage)
       }
     )
 
     // Wait for all parallel Insight requests to return.
-    let result: MaskDetailsInterface[] = await Promise.all(addressPromises)
+    let result: MaskDetailsInterface[] = await Promise.all(masksPromises)
 
-    // Return the array of retrieved address information.
+    // Return the array of retrieved masks information.
     res.status(200)
     return res.json(result)
   } catch (err) {
@@ -246,7 +246,7 @@ async function detailsBulk(
     }
 
     //logger.error(`Error in detailsBulk(): `, err)
-    wlogger.error(`Error in address.ts/detailsBulk().`, err)
+    wlogger.error(`Error in masks.ts/detailsBulk().`, err)
 
     res.status(500)
     return res.json({ error: util.inspect(err) })

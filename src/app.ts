@@ -20,11 +20,12 @@ const cors = require("cors")
 const AuthMW = require("./middleware/auth")
 
 const swStats = require("swagger-stats")
-let apiSpec = require("./public/facetop-mainnet-rest-v2.json")
+let apiSpec = require("./public/facetop-mainnet-rest-v1.json")
 
 // v1
 const indexV1 = require("./routes/v1/index")
 const healthCheckV1 = require("./routes/v1/health-check")
+const maskV1 = require("./routes/v1/mask")
 
 interface IError {
   message: string
@@ -98,6 +99,7 @@ app.use(`/${v1prefix}/`, auth.mw())
 app.use(`/${v1prefix}/`, routeRateLimit)
 app.use("/", indexV1)
 app.use(`/${v1prefix}/` + `health-check`, healthCheckV1)
+// app.use(`/${v1prefix}/` + `mask`, maskV1)
 
 
 // catch 404 and forward to error handler
