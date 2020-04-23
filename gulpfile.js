@@ -14,8 +14,5 @@ const ASSET_FILES = [
 gulp.task("build", () => {
   fs.emptyDirSync("./dist")
   fs.removeSync("./dist")
-  fs.emptyDirSync("./swaggerJSONFilesBuilt")
-  fs.removeSync("./swaggerJSONFilesBuilt")
-
   gulp.src(ASSET_FILES).pipe(gulp.dest("dist"))
 })
