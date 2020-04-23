@@ -1,6 +1,5 @@
 
 import * as express from "express"
-import { logReqInfo } from "./middleware/req-logging"
 // Middleware
 import { routeRateLimit } from "./middleware/route-ratelimit"
 
@@ -14,8 +13,6 @@ const debug = require("debug")("rest-cloud:server")
 const http = require("http")
 const cors = require("cors")
 const AuthMW = require("./middleware/auth")
-
-let apiSpec = require("./public/facetop-mainnet-rest-v1.json")
 
 // v1
 const indexV1 = require("./routes/v1/index")
@@ -44,20 +41,10 @@ app.set("view engine", "jade")
 
 app.use("/public", express.static(`${__dirname}/public`))
 
-// Log each request to the console with IP addresses.
-app.use(
-  logger(
-    `:remote-addr :remote-user :method :url :status :response-time ms - :res[content-length] :user-agent`
-  )
-)
-
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
-
-// Local logging middleware for tracking incoming connection information.
-app.use(`/`, logReqInfo)
 
 const v1prefix = "v1"
 
