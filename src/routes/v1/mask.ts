@@ -45,8 +45,7 @@ function root(
 // Query the Insight API for details on a single BCH masks.
 // Returns a Promise.
 async function detailsFromInsight(
-  thisAddress: string,
-  currentPage: number = 0
+  thisAddress: string
 ): Promise<MaskDetailsInterface> {
   try {
     let addr: string
@@ -62,7 +61,7 @@ async function detailsFromInsight(
 
     // Set from and to params based on currentPage and pageSize
     // https://github.com/bitpay/insight-api/blob/master/README.md#notes-on-upgrading-from-v02
-    const from: number = currentPage * PAGE_SIZE
+    const from: number = 1 * PAGE_SIZE
     const to: number = from + PAGE_SIZE
     path = `${path}?from=${from}&to=${to}`
 
@@ -80,7 +79,7 @@ async function detailsFromInsight(
     delete retData.addrStr
 
     // Append pagination information to the return data.
-    retData.currentPage = currentPage
+    retData.currentPage = 1
     retData.pagesTotal = pagesTotal
 
     return retData
@@ -99,9 +98,6 @@ async function detailsSingle(
 ): Promise<express.Response> {
   try {
     const mask: string = req.params.mask
-    const currentPage: number = req.query.page
-      ? parseInt(req.query.page, 10)
-      : 0
 
     if (!mask || mask === "") {
       res.status(400)
@@ -145,8 +141,7 @@ async function detailsSingle(
 
     // Query the Insight API.
     let retData: MaskDetailsInterface = await detailsFromInsight(
-      mask,
-      currentPage
+      mask
     )
 
     // Return the retrieved mask information.
@@ -227,7 +222,7 @@ async function detailsBulk(
     // Insight API in parallel.
     let masksPromises: Promise<MaskDetailsInterface>[] = masks.map(
       async (masks: any): Promise<MaskDetailsInterface> => {
-        return detailsFromInsight(masks, currentPage)
+        return detailsFromInsight(masks)
       }
     )
 
