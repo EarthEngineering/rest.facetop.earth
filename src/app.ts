@@ -1,5 +1,4 @@
 
-// const wtfnode = require("wtfnode") // Debugging the event loop
 // const util = require("util")
 
 import * as express from "express"
