@@ -40,8 +40,8 @@
 	},
 	"openapi": "3.0.0",
 	"info": {
-		"description": "rest.facetop.xyz is the REST layer for Facetop. More info: [http://www.facetop.xyz](http://www.facetop.xyz). Chatroom [https://t.me/earthengineering](https://t.me/earthengineering)",
-		"version": "0.1.0",
+		"description": "rest.facetop.earth is the REST layer for Facetop. More info: [http://www.facetop.earth](http://www.facetop.earth). Chatroom [https://t.me/earthengineering](https://t.me/earthengineering)",
+		"version": "0.1.2",
 		"title": "REST",
 		"license": {
 			"name": "MIT",
@@ -150,7 +150,7 @@
 			"description": "Mask details",
 			"externalDocs": {
 				"description": "Find out more",
-				"url": "http://www.facetop.xyz"
+				"url": "http://www.facetop.earth"
 			}
 		}
 	]
