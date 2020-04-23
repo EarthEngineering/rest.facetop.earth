@@ -1,21 +1,15 @@
 // imports
 import axios, { AxiosResponse } from "axios"
-import { BITBOX } from "bitbox-sdk"
 import * as express from "express"
 import * as util from "util"
 import {
   MaskDetailsInterface
 } from "./interfaces/RESTInterfaces"
 import logger = require("./logging.js")
-import routeUtils = require("./route-utils")
 import wlogger = require("../../util/winston-logging")
 
 // consts
 const router: express.Router = express.Router()
-const bitbox: BITBOX = new BITBOX()
-const SLPSDK: any = require("slp-sdk")
-const SLP: any = new SLPSDK()
-let Utils = SLP.slpjs.Utils
 
 // Used for processing error messages before sending them to the user.
 util.inspect.defaultOptions = { depth: 1 }
@@ -48,16 +42,8 @@ async function detailsFromInsight(
   thisAddress: string
 ): Promise<MaskDetailsInterface> {
   try {
-    let addr: string
-    if (
-      process.env.BITCOINCOM_BASEURL === "https://bch-insight.bitpay.com/api/"
-    ) {
-      addr = bitbox.Address.toCashAddress(thisAddress)
-    } else {
-      addr = bitbox.Address.toLegacyAddress(thisAddress)
-    }
 
-    let path: string = `${process.env.BITCOINCOM_BASEURL}addr/${addr}`
+    let path: string = `${process.env.BITCOINCOM_BASEURL}addr`
 
     // Set from and to params based on currentPage and pageSize
     // https://github.com/bitpay/insight-api/blob/master/README.md#notes-on-upgrading-from-v02
@@ -72,10 +58,6 @@ async function detailsFromInsight(
     // Calculate pagesTotal from response
     const pagesTotal: number = Math.ceil(retData.txApperances / PAGE_SIZE)
 
-    // Append different masks formats to the return data.
-    retData.legacyAddress = bitbox.Address.toLegacyAddress(retData.addrStr)
-    retData.cashAddress = bitbox.Address.toCashAddress(retData.addrStr)
-    retData.slpAddress = Utils.toSlpAddress(retData.cashAddress)
     delete retData.addrStr
 
     // Append pagination information to the return data.
@@ -117,28 +99,6 @@ async function detailsSingle(
       `Executing mask/detailsSingle with this mask: `,
       mask
     )
-
-    // Ensure the input is a valid BCH mask.
-    try {
-      bitbox.Address.toLegacyAddress(mask)
-    } catch (err) {
-      res.status(400)
-      return res.json({
-        error: `Invalid BCH mask. Double check your mask is valid: ${mask}`
-      })
-    }
-
-    // Prevent a common user error. Ensure they are using the correct network mask.
-    const networkIsValid: boolean = routeUtils.validateNetwork(
-      Utils.toLegacyAddress(mask)
-    )
-    if (!networkIsValid) {
-      res.status(400)
-      return res.json({
-        error: `Invalid network. Trying to use a testnet mask on mainnet, or vice versa.`
-      })
-    }
-
     // Query the Insight API.
     let retData: MaskDetailsInterface = await detailsFromInsight(
       mask
@@ -149,10 +109,9 @@ async function detailsSingle(
     return res.json(retData)
   } catch (err) {
     // Attempt to decode the error message.
-    const { msg, status } = routeUtils.decodeError(err)
-    if (msg) {
-      res.status(status)
-      return res.json({ error: msg })
+    if (false) {
+      res.status(1)
+      return res.json({ error: "foo"})
     }
 
     // Write out error to error log.
@@ -182,14 +141,6 @@ async function detailsBulk(
       })
     }
 
-    // Enforce array size rate limits
-    if (!routeUtils.validateArraySize(req, masks)) {
-      res.status(429) //
-      return res.json({
-        error: `Array too large.`
-      })
-    }
-
     logger.debug(`Executing masks/details with these masks: `, masks)
     wlogger.debug(`Executing masks/details with these masks: `, masks)
 
@@ -197,25 +148,6 @@ async function detailsBulk(
     for (let i: number = 0; i < masks.length; i++) {
       const thisAddress: string = masks[i]
       // Ensure the input is a valid BCH masks.
-      try {
-        bitbox.Address.toLegacyAddress(thisAddress)
-      } catch (err) {
-        res.status(400)
-        return res.json({
-          error: `Invalid BCH masks. Double check your masks is valid: ${thisAddress}`
-        })
-      }
-
-      // Prevent a common user error. Ensure they are using the correct network masks.
-      const networkIsValid: boolean = routeUtils.validateNetwork(
-        Utils.toCashAddress(thisAddress)
-      )
-      if (!networkIsValid) {
-        res.status(400)
-        return res.json({
-          error: `Invalid network for masks ${thisAddress}. Trying to use a testnet masks on mainnet, or vice versa.`
-        })
-      }
     }
 
     // Loops through each masks and creates an array of Promises, querying
@@ -233,12 +165,6 @@ async function detailsBulk(
     res.status(200)
     return res.json(result)
   } catch (err) {
-    // Attempt to decode the error message.
-    const { msg, status } = routeUtils.decodeError(err)
-    if (msg) {
-      res.status(status)
-      return res.json({ error: msg })
-    }
 
     //logger.error(`Error in detailsBulk(): `, err)
     wlogger.error(`Error in masks.ts/detailsBulk().`, err)
