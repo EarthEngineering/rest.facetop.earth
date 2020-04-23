@@ -3,7 +3,6 @@ const gulp = require("gulp")
 const fs = require("fs-extra")
 
 const ASSET_FILES = [
-  "src/*.json",
   "src/**/*.json",
   "src/**/*.jade",
   "src/**/*.css",

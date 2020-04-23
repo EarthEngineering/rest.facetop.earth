@@ -6,11 +6,9 @@
   "contributors": [],
   "license": "MIT",
   "scripts": {
-    "start": "npm run build && node ./dist/app.js",
+    "start": "npm install && npm run build && node ./dist/app.js",
     "build": "node ./node_modules/gulp/bin/gulp.js build && ./node_modules/typescript/bin/tsc",
-    "dev": "nodemon ./dist/app.js",
-    "test": "export NETWORK=testnet && npm run build && nyc --reporter=text mocha --require babel-core/register --timeout 25000 test/v1/ --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "dev": "nodemon ./dist/app.js"
   },
   "engines": {
     "node": "10.15.3"
@@ -28,7 +26,6 @@
     "express-rate-limit": "^2.11.0",
     "helmet": "^3.12.1",
     "jade": "~1.11.0",
-    "mocha": "6.1.4",
     "morgan": "^1.9.1",
     "mqtt": "^2.8.0",
     "passport": "^0.4.0",
@@ -52,22 +49,10 @@
     "nock": "^10.0.0",
     "node-mocks-http": "^1.7.0",
     "nodemon": "^1.18.1",
-    "nyc": "^11.6.0",
     "pandacash-core": "^0.1.0",
     "prettier": "^1.14.2",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "semantic-release": "^15.11.0",
-    "sinon": "^6.3.4",
     "typescript": "^3.1.4"
-  },
-  "release": {
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "npmPublish": false
-      }
-    ]
   },
   "prettier": {
     "singleQuote": false,
