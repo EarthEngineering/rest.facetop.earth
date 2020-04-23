@@ -2,7 +2,7 @@
 	"openapi": "3.0.0",
 	"info": {
 		"description": "rest.facetop.xyz is the REST layer for Facetop. More info: [http://www.facetop.xyz](http://www.facetop.xyz). Chatroom [https://t.me/earthengineering](https://t.me/earthengineering)",
-		"version": "3.12.4",
+		"version": "0.1.0",
 		"title": "REST",
 		"license": {
 			"name": "MIT",

@@ -1,10 +1,7 @@
 {
   "servers": [
     {
-      "url": "/v2"
-    },
-    {
-      "url": "/v3-alpha"
+      "url": "/v1"
     }
   ]
 }

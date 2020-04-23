@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "The Bitcoin Cash JSON PRC over HTTP",
-    "version": "3.12.4",
+    "description": "REST Webservices for Facetop",
+    "version": "0.1.0",
     "title": "REST",
     "license": {
       "name": "MIT",
